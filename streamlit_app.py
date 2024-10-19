@@ -134,7 +134,7 @@ with st.expander("📉 Distortion Plot (Elbow Method)"):
     plt.plot(range(1, 11), wcss, marker='o', linestyle='--', color='b')
 
     # Circle the second cluster (turning point)
-    plt.scatter(2, wcss[1], color='red', s=100, label='Turning Point')
+    plt.scatter(2, wcss[1], color='red',  label='Turning Point')
     circle = plt.Circle((2, wcss[1]), 100, color='red', fill=False, linewidth=2, linestyle='--')
     plt.gca().add_artist(circle)
 
