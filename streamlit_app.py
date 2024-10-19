@@ -135,7 +135,7 @@ with st.expander("📉 Distortion Plot (Elbow Method)"):
 
     # Circle the second cluster (turning point)
     plt.scatter(2, wcss[1], color='red', s=100, label='Turning Point')
-    circle = plt.Circle((2, wcss[1]),  color='red', fill=False, linewidth=2, linestyle='--')
+    circle = plt.Circle((2, wcss[1]), 100, color='red', fill=False, linewidth=2, linestyle='--')
     plt.gca().add_artist(circle)
 
     plt.title('Elbow Method for Optimal Clusters')
@@ -147,6 +147,12 @@ with st.expander("📉 Distortion Plot (Elbow Method)"):
     
     st.pyplot(plt)
     plt.close()
+    
+    st.info(
+        "📌 **Remark:**\n"
+        "- The elbow point is observed at **Cluster 2**, indicating a significant reduction in WCSS. This suggests that 2 clusters are optimal for grouping the data effectively."
+        "- For further confirmation, we also utilized **Silhouette Score Analysis** in the preceding steps to validate the optimal number of clusters."
+    )
 
 
 # Silhouette analysis to evaluate cluster quality
