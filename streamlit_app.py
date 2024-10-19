@@ -40,37 +40,37 @@ st.info(
 
 
 
-# Data Cleaning & RFM Calculation
-# Data Cleaning & RFM Calculation
-# Data Cleaning & RFM Calculation
-# Convert InvoiceDate to datetime
-df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+# # Data Cleaning & RFM Calculation
+# # Data Cleaning & RFM Calculation
+# # Data Cleaning & RFM Calculation
+# # Convert InvoiceDate to datetime
+# df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
 
-# Remove rows with missing CustomerID and negative values
-df = df.dropna(subset=['CustomerID'])
-df = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
+# # Remove rows with missing CustomerID and negative values
+# df = df.dropna(subset=['CustomerID'])
+# df = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
 
-# Create TotalPrice column
-df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
+# # Create TotalPrice column
+# df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
 
-# Calculate Recency, Frequency, and Monetary values
-latest_date = df['InvoiceDate'].max()
-rfm = df.groupby('CustomerID').agg({
-    'InvoiceDate': lambda x: (latest_date - x.max()).days,  # Recency
-    'InvoiceNo': 'nunique',  # Frequency
-    'TotalPrice': 'sum'  # Monetary
-}).reset_index()
+# # Calculate Recency, Frequency, and Monetary values
+# latest_date = df['InvoiceDate'].max()
+# rfm = df.groupby('CustomerID').agg({
+#     'InvoiceDate': lambda x: (latest_date - x.max()).days,  # Recency
+#     'InvoiceNo': 'nunique',  # Frequency
+#     'TotalPrice': 'sum'  # Monetary
+# }).reset_index()
 
-# Rename columns for clarity
-rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
+# # Rename columns for clarity
+# rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 
-# Apply log transformation to Monetary for skewness correction
-rfm['Monetary'] = np.log1p(rfm['Monetary'])
+# # Apply log transformation to Monetary for skewness correction
+# rfm['Monetary'] = np.log1p(rfm['Monetary'])
 
-# Standardize RFM values
-scaler = StandardScaler()
-rfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])
-rfm_scaled = pd.DataFrame(rfm_scaled, columns=['Recency', 'Frequency', 'Monetary'])
+# # Standardize RFM values
+# scaler = StandardScaler()
+# rfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])
+# rfm_scaled = pd.DataFrame(rfm_scaled, columns=['Recency', 'Frequency', 'Monetary'])
 
 
 
