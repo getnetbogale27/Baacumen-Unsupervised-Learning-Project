@@ -73,3 +73,41 @@ with st.expander("📊 View Scaled Data Pairplot"):
     
     # Display the plot in Streamlit
     st.pyplot(plt)
+
+
+
+
+
+# Apply log transformation to Monetary (optional for reducing skewness)
+rfm['Monetary'] = np.log1p(rfm['Monetary'])
+
+# Standardize the RFM values
+scaler = StandardScaler()
+rfm_scaled = scaler.fit_transform(rfm[['Recency', 'Frequency', 'Monetary']])
+
+# Convert back to DataFrame
+rfm_scaled = pd.DataFrame(rfm_scaled, columns=['Recency', 'Frequency', 'Monetary'])
+
+# Elbow method to determine optimal number of clusters
+wcss = []
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
+    kmeans.fit(rfm_scaled)
+    wcss.append(kmeans.inertia_)
+
+# Create an expander for displaying the log-transformed and standardized data
+with st.expander("🔢 RFM Data After Transformation and Scaling"):
+    st.write("RFM Data after Log Transformation and Standardization:")
+    st.dataframe(rfm_scaled)
+
+# Plot the Elbow curve
+plt.figure(figsize=(8, 5))
+plt.plot(range(1, 11), wcss, marker='o')
+plt.title('Elbow Method for Optimal Clusters')
+plt.xlabel('Number of Clusters')
+plt.ylabel('WCSS')
+plt.xticks(range(1, 11))  # Ensure all x-axis labels are shown
+plt.grid()
+st.pyplot(plt)  # Display the plot in Streamlit
+
+
