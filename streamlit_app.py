@@ -220,8 +220,8 @@ with st.expander("📊 Scatter Plot: Frequency vs Monetary by Cluster"):
         "📌 **Scatter Plot Insights:**\n"
         "- The scatter plot visualizes customer segments based on their **Frequency** (number of purchases) and **Monetary** (total spending).\n"
         "- Each color represents a different customer cluster, highlighting distinct groups within the data.\n"
-        "- Customers in **Cluster 0** show high frequency but low monetary value, indicating frequent, low-value purchases.\n"
-        "- In contrast, **Cluster 1** reveal customers with lower frequency but higher spending, suggesting loyalty or premium purchases.\n"
+        "- Customers in **Cluster 0** show the lowest frequency and low monetary value, indicating infrequent, low-value purchases.\n"
+        "- In contrast, **Cluster 1** reveal relatively high frequency and monetary value, suggesting these customers are more engaged and tend to make higher-value purchases.\n"
         "- This visualization aids in understanding customer behavior and tailoring marketing strategies accordingly."
     )
 
