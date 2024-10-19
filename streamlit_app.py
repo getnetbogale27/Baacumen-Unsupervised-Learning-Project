@@ -189,7 +189,15 @@ with st.expander("📊 Silhouette Score Analysis"):
 #Step 6
 # K-Means Clustering and Visualization
 # User selects number of clusters via slider
-num_clusters = st.slider("Select Number of Clusters:", min_value=2, max_value=10, value=optimal_clusters)
+num_clusters = st.slider(
+    "Select Number of Clusters:",
+    min_value=2,
+    max_value=10,
+    value=optimal_clusters,
+    help="📌 **Guidance:**\n"
+    "- We can use this slider to choose the number of clusters for our K-Means analysis.\n"
+    "- The optimal number of clusters suggested by previous analyses is **{optimal_clusters}**."
+)
 
 # Apply K-means with selected clusters
 kmeans = KMeans(n_clusters=num_clusters, init='k-means++', random_state=42)
