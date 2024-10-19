@@ -103,22 +103,51 @@ with st.expander("📊 Pairplot of Scaled Data"):
 #Step 5
 # Cluster Analysis: Elbow Method and Silhouette Score
 # Elbow method for determining optimal clusters
+# wcss = []
+# for i in range(1, 11):
+#     kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
+#     kmeans.fit(rfm_scaled)
+#     wcss.append(kmeans.inertia_)
+
+# with st.expander("📉 Distortion Plot (Elbow Method)"):
+#     plt.figure(figsize=(8, 5))
+#     plt.plot(range(1, 11), wcss, marker='o', linestyle='--')
+#     plt.title('Elbow Method for Optimal Clusters')
+#     plt.xlabel('Number of Clusters')
+#     plt.ylabel('WCSS (Inertia)')
+#     plt.xticks(range(1, 11))
+#     plt.grid()
+#     st.pyplot(plt)
+#     plt.close()
+
+
+# Calculate WCSS for different number of clusters
 wcss = []
 for i in range(1, 11):
     kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
     kmeans.fit(rfm_scaled)
     wcss.append(kmeans.inertia_)
 
+# Plotting the Elbow Method
 with st.expander("📉 Distortion Plot (Elbow Method)"):
     plt.figure(figsize=(8, 5))
-    plt.plot(range(1, 11), wcss, marker='o', linestyle='--')
+    plt.plot(range(1, 11), wcss, marker='o', linestyle='--', color='b')
+
+    # Circle the second cluster (turning point)
+    plt.scatter(2, wcss[1], color='red', s=100, label='Turning Point')
+    circle = plt.Circle((2, wcss[1]), 50, color='red', fill=False, linewidth=2, linestyle='--')
+    plt.gca().add_artist(circle)
+
     plt.title('Elbow Method for Optimal Clusters')
     plt.xlabel('Number of Clusters')
     plt.ylabel('WCSS (Inertia)')
     plt.xticks(range(1, 11))
     plt.grid()
+    plt.legend()
+    
     st.pyplot(plt)
     plt.close()
+
 
 # Silhouette analysis to evaluate cluster quality
 silhouette_scores = []
