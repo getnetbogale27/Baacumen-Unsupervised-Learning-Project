@@ -301,7 +301,7 @@ with st.expander("📊 Cluster Summary Statistics"):
     )
 
 
-
+#Step 8
 # Cluster distribution plot
 with st.expander("📊 Cluster Distribution"):
     sns.countplot(data=rfm, x='Cluster', palette='muted')
@@ -316,7 +316,11 @@ with st.expander("📊 Cluster Distribution"):
         "- Understanding the distribution is crucial for targeted marketing efforts and resource allocation, focusing on both high-volume (Cluster 0) and high-value (Cluster 1) segments."
     )
 
+#Step 9
+# Export the RFM DataFrame to a CSV file
+rfm.to_csv('customer_segments.csv', index=False)
 
+#Step 10
 with st.expander("📈 Recommendations and Business Insights"):
     # Recommendations Section
     st.info(
