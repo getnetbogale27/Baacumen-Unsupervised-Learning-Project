@@ -5,6 +5,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import zscore
 
 @st.cache_data
 def load_data():
@@ -34,3 +35,23 @@ with st.expander('🔢 Raw data (first 5 rows)'):
 with st.expander('Data Types of Each Column'):
     st.write(df.dtypes)
 
+# Assuming you have loaded your DataFrame `df`
+df = pd.read_csv('your_dataset.csv')  # Load your dataset
+
+# Select only numeric columns for scaling
+dfAttr = df.select_dtypes(include=['float64', 'int64']).copy()
+
+# Scale the data using z-score normalization
+dfScaled = dfAttr.apply(zscore)
+
+# Create an expander for the pairplot
+with st.expander("📊 View Scaled Data Pairplot"):
+    # Plot pairplot with KDE on diagonals
+    sns.pairplot(dfScaled, diag_kind='kde')
+
+    # Add title and improve layout
+    plt.suptitle("Pairplot of Scaled Technical Support Data", y=1.02)
+    plt.tight_layout()
+    
+    # Display the plot in Streamlit
+    st.pyplot(plt)
