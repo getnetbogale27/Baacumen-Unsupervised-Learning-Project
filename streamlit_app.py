@@ -89,7 +89,14 @@ with st.expander("📊 Pairplot of Scaled Data"):
     sns.pairplot(rfm_scaled, diag_kind='kde')
     plt.suptitle("Pairplot of Scaled RFM Data", y=1.02)
     st.pyplot(plt)
-    plt.close()  # Prevent overlapping plots
+    plt.close()  
+    st.info(
+        "📌 **Remark:**\n"
+        "- **Monetary vs. Frequency**: This plot indicates a positive relationship, suggesting that customers who spend more (higher monetary value) also tend to engage more frequently with the business. This correlation is significant as it highlights the importance of customer loyalty and spending patterns, indicating that targeting high-spending customers could yield further benefits.\n"
+        "- **Recency vs. Other Metrics**: The relationships between **Recency** and the other variables (Monetary and Frequency) appear to be weak or negligible. This implies that recent customers do not necessarily correspond to high spending or high frequency, indicating a potential segment of customers who may need different marketing strategies to increase their engagement.\n"
+        "- **Overall Observations**: The diagonal plots display the distribution of each variable, allowing for insights into their individual behaviors. The density plots indicate the spread and central tendency of each variable. Notably, any outliers or skewness in these distributions should be addressed, as they may influence the analysis and modeling processes.\n"
+        "- **Implications for Strategy**: Understanding these relationships can inform targeted marketing strategies. For example, increasing engagement efforts on high-frequency, high-monetary customers could be a priority, while strategies to re-engage lower-frequency customers may also be considered."
+    )
 
 
 
