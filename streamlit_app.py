@@ -115,3 +115,33 @@ with st.expander("📈 Elbow Method for Optimal Clusters"):
     st.pyplot(plt)
 
 
+
+
+
+from sklearn.metrics import silhouette_score
+
+# Calculate Silhouette scores for 2 to 10 clusters
+silhouette_scores = []
+for i in range(2, 11):
+    kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
+    kmeans.fit(rfm_scaled)
+    score = silhouette_score(rfm_scaled, kmeans.labels_)
+    silhouette_scores.append(score)
+
+# Create an expander for the Silhouette scores plot
+with st.expander("📊 Silhouette Analysis for Optimal Clusters"):
+    # Plot the Silhouette scores
+    plt.figure(figsize=(8, 5))
+    plt.plot(range(2, 11), silhouette_scores, marker='o', linestyle='--')
+    plt.title('Silhouette Score Analysis')
+    plt.xlabel('Number of Clusters')
+    plt.ylabel('Silhouette Score')
+    plt.xticks(range(2, 11))  # Ensure all x-axis labels are shown
+    plt.grid()
+
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
+    # Show the optimal number of clusters based on the highest Silhouette score
+    optimal_clusters = np.argmax(silhouette_scores) + 2  # +2 because range starts at 2
+    st.write(f"📌 Optimal number of clusters based on Silhouette Score: **{optimal_clusters}**")
