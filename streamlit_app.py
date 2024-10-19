@@ -24,7 +24,7 @@ df = load_data()
 #Step 2
 # Streamlit App Setup
 # Streamlit title and info
-st.title('🤖 Unsupervised ML App')
+st.title('🧠 Unsupervised ML App')
 st.write("**Author:** Getnet B. (PhD Candidate)")
 
 st.info(
