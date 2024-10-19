@@ -191,12 +191,14 @@ with st.expander("📊 Silhouette Score Analysis"):
 # Slider for selecting the number of clusters
 num_clusters = st.slider("Select Number of Clusters:", min_value=2, max_value=10, value=optimal_clusters)
 
-# Information regarding cluster selection
-st.info(
-    "📌 **Cluster Selection:**\n"
-    "- We can use the slider above to select the number of clusters for the K-Means clustering analysis. \n"
-    "- The default value is set to **{optimal_clusters}**, based on our earlier analysis using both the **Elbow Method** and **Silhouette Score Analysis**."
-)
+# Expander for additional information regarding cluster selection
+with st.expander("📊 Cluster Selection Info"):
+    st.info(
+        "📌 **Cluster Selection:**\n"
+        "- We can use the slider above to select the number of clusters for the K-Means clustering analysis. \n"
+        "- The default value is set to **{optimal_clusters}**, based on our earlier analysis using both the **Elbow Method** and **Silhouette Score Analysis**."
+    )
+
 
 # Apply K-means with selected clusters
 kmeans = KMeans(n_clusters=num_clusters, init='k-means++', random_state=42)
