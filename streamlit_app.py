@@ -31,6 +31,6 @@ st.write("**Affiliation:** Baacumen Data Science Bootcamp")
 with st.expander('🔢 Raw data (first 5 rows)'):
     st.write(df.head(5))  # Display first 5 rows of raw data
 
-st.subheader("Data Types of Each Column:")
+st.expander("Data Types of Each Column:")
 st.write(df.dtypes)
 
