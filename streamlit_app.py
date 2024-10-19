@@ -19,10 +19,9 @@ df = load_data()
 # Streamlit app title
 st.title('🤖 Unsupervised ML App')
 st.write("**Author:** Getnet B. (PhD Candidate)")
-st.write("**Affiliation:** Baacumen Data Science Bootcamp")
 
 st.info(
-    "An online retailer seeks to understand its customers through transactional data. "
+    "Objective: An online retailer seeks to understand its customers through transactional data. "
     "We used K-means clustering with the RFM (Recency, Frequency, Monetary) model to segment customers "
     "and uncover insights for targeted marketing."
 )
