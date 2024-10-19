@@ -100,14 +100,18 @@ with st.expander("🔢 RFM Data After Transformation and Scaling"):
     st.write("RFM Data after Log Transformation and Standardization:")
     st.dataframe(rfm_scaled)
 
-# Plot the Elbow curve
-plt.figure(figsize=(8, 5))
-plt.plot(range(1, 11), wcss, marker='o')
-plt.title('Elbow Method for Optimal Clusters')
-plt.xlabel('Number of Clusters')
-plt.ylabel('WCSS')
-plt.xticks(range(1, 11))  # Ensure all x-axis labels are shown
-plt.grid()
-st.pyplot(plt)  # Display the plot in Streamlit
+# Create an expander for the Elbow method plot
+with st.expander("📈 Elbow Method for Optimal Clusters"):
+    # Plot the Elbow curve
+    plt.figure(figsize=(8, 5))
+    plt.plot(range(1, 11), wcss, marker='o')
+    plt.title('Elbow Method for Optimal Clusters')
+    plt.xlabel('Number of Clusters')
+    plt.ylabel('WCSS')
+    plt.xticks(range(1, 11))  # Ensure all x-axis labels are shown
+    plt.grid()
+
+    # Display the plot in Streamlit
+    st.pyplot(plt)
 
 
