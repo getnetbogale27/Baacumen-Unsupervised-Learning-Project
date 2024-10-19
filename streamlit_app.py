@@ -60,7 +60,12 @@ rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 
 # Apply log transformation to Monetary for skewness correction
 rfm['Recency'] = np.log1p(rfm['Recency'])
-rfm['Frequency'] = zscore(rfm['Frequency'])
+# Normalize Frequency to be between 0 and 1
+rfm['Frequency_normalized'] = (rfm['Frequency'] - rfm['Frequency'].min()) / (rfm['Frequency'].max() - rfm['Frequency'].min())
+
+# Apply logit transformation
+rfm['Frequency'] = np.log(rfm['Frequency_normalized'] / (1 - rfm['Frequency_normalized']))
+
 rfm['Monetary'] = np.log1p(rfm['Monetary'])
 
 # Standardize RFM values
