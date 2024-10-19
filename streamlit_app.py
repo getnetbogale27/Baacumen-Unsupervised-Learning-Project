@@ -219,10 +219,8 @@ with st.expander("📊 Scatter Plot: Frequency vs Monetary by Cluster"):
     st.info(
         "📌 **Scatter Plot Insights:**\n"
         "- The scatter plot visualizes customer segments based on their **Frequency** (number of purchases) and **Monetary** (total spending).\n"
-        "- Each color represents a different customer cluster, highlighting distinct groups within the data.\n"
         "- Customers in **Cluster 0** show the lowest frequency and low monetary value, indicating infrequent, low-value purchases.\n"
-        "- In contrast, **Cluster 1** reveal relatively high frequency and monetary value, suggesting these customers are more engaged and tend to make higher-value purchases.\n"
-        "- This visualization aids in understanding customer behavior and tailoring marketing strategies accordingly."
+        "- In contrast, **Cluster 1** reveal relatively high frequency and monetary value, suggesting these customers are more engaged and tend to make higher-value purchases."
     )
 
 
@@ -234,6 +232,12 @@ with st.expander("📈 Pairplot of RFM Data by Cluster"):
     pairplot_fig.fig.suptitle('Pairplot of RFM Data by Cluster', y=1.02)
     st.pyplot(pairplot_fig)
     plt.close()
+    st.info(
+        "📌 **Pairplot Insights:**\n"
+        "- The pairplot provides a comprehensive view of the relationships between **Recency**, **Frequency**, and **Monetary** across different customer clusters.\n"
+        "- Each cluster is represented in distinct colors, allowing for easy identificatiion of customer segments.\n"
+        "- Notably, there is a visible separation bettween the clusters in the pairwise plots, indicating that different customer segments exhibit unique purchasing behaviors."
+    )
 
 
 # Boxplot
@@ -253,7 +257,15 @@ with st.expander("📊 Box Plot Grouped by Clusters"):
 
     st.pyplot(plt)
     plt.close()
-
+    st.info(
+        "📌 **Box Plot Insights:**\n"
+        "- The box plot visualizes the distribution of the selected RFM feature across different customer clusters.\n"
+        "- Each box represents the interquartile range (IQR), with the line inside the box indicating the median value for each cluster.\n"
+        "- Outliers are displayed as individual points beyond the whiskers, providing insights into extreme values within each cluster.\n"
+        "- For **Recency**, we may observe that certain clusters have significantly lower medians, indicating differences in customer engagement.\n"
+        "- **Frequency** can reveal patterns of purchase behavior, showing which clusters have the most loyal customers.\n"
+        "- The **Monetary** distribution highlights how much different clusters spend on average, allowing for targeted marketing strategies based on spending behavior."
+    )
 
 
 
@@ -270,11 +282,25 @@ cluster_summary = rfm.groupby('Cluster').agg({
 with st.expander("📊 Cluster Summary Statistics"):
     st.dataframe(cluster_summary.style.format(precision=2))
     st.info(
-        "📌 **How to Interpret:**\n"
-        "- **Recency**: Lower values indicate more recent purchases.\n"
-        "- **Frequency**: Higher values indicate frequent purchases.\n"
-        "- **Monetary**: Higher values represent higher spending customers."
+        "📌 **Cluster Summary Insights:**\n"
+        "- **Cluster 0:**\n"
+        f"  - **Average Recency:** {cluster_summary['Recency'].iloc[0]:.2f} days (indicating a more recent purchasing behavior).\n"
+        f"  - **Average Frequency:** {cluster_summary['Frequency'].iloc[0]:.2f} purchases per customer (suggesting lower purchase frequency).\n"
+        f"  - **Average Monetary:** ${cluster_summary['Monetary'].iloc[0]:.2f} (indicating lower spending).\n"
+        f"  - **Customer Count:** {cluster_summary['CustomerID'].iloc[0]} customers in this cluster.\n\n"
+        "- **Cluster 1:**\n"
+        f"  - **Average Recency:** {cluster_summary['Recency'].iloc[1]:.2f} days (showing more recent purchases compared to Cluster 0).\n"
+        f"  - **Average Frequency:** {cluster_summary['Frequency'].iloc[1]:.2f} purchases per customer (higher purchase frequency).\n"
+        f"  - **Average Monetary:** ${cluster_summary['Monetary'].iloc[1]:.2f} (indicating higher spending).\n"
+        f"  - **Customer Count:** {cluster_summary['CustomerID'].iloc[1]} customers in this cluster.\n\n"
+        "📌 **Interpretation:**\n"
+        "- **Recency:** Lower values indicate more recent purchases, suggesting engagement.\n"
+        "- **Frequency:** Higher values indicate frequent purchases, pointing to loyal customers.\n"
+        "- **Monetary:** Higher values represent customers who spend more, valuable for revenue.\n"
+        "- These insights can guide marketing strategies, with a focus on retaining high-frequency, high-monetary customers in Cluster 1."
     )
+
+
 
 # Cluster distribution plot
 with st.expander("📊 Cluster Distribution"):
