@@ -164,20 +164,27 @@ with st.expander("📈 Pairplot of RFM Data by Cluster"):
 # Boxplot
 # Boxplot
 # Boxplot
-# Box plot: Group by clusters
-with st.expander("📊 Box Plot Grouped by Clusters"):
-    # Select RFM feature to plot (Recency, Frequency, or Monetary)
-    feature = st.selectbox("Select RFM feature for box plot:", ['Recency', 'Frequency', 'Monetary'])
+# Box plots for all RFM features grouped by clusters
+with st.expander("📊 Box Plots for RFM Features by Cluster"):
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6))  # Create a 1x3 subplot grid
 
-    plt.figure(figsize=(8, 5))
-    sns.boxplot(data=rfm, x='Cluster', y=feature, palette='Set2')
-    plt.title(f'{feature} Distribution by Cluster')
-    plt.xlabel('Cluster')
-    plt.ylabel(feature)
-    plt.grid(True)
+    # List of RFM features to plot
+    features = ['Recency', 'Frequency', 'Monetary']
 
-    st.pyplot(plt)
-    plt.close()
+    # Plot each feature as a separate box plot
+    for i, feature in enumerate(features):
+        sns.boxplot(data=rfm, x='Cluster', y=feature, palette='Set2', ax=axes[i])
+        axes[i].set_title(f'{feature} Distribution by Cluster')
+        axes[i].set_xlabel('Cluster')
+        axes[i].set_ylabel(feature)
+        axes[i].grid(True)
+
+    # Adjust layout to prevent overlapping
+    plt.tight_layout()
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
+    plt.close(fig)
 
 
 
