@@ -20,10 +20,15 @@ st.title('🤖 Unsupervised ML App')
 
 st.info(
     "An online retailer seeks to understand its customers through transactional data. "
-    "Use K-means clustering with the RFM (Recency, Frequency, Monetary) model to segment customers "
+    "We used K-means clustering with the RFM (Recency, Frequency, Monetary) model to segment customers "
     "and uncover insights for targeted marketing."
 )
 
+# Author Information
+st.markdown(
+    "**Author:** Getnet B. (PhD Candidate)  \n"
+    "**Affiliation:** Baacumen Data Science Bootcamp"
+)
 
 # Expanders for different data views
 with st.expander('🔢 Raw data (first 5 rows)'):
