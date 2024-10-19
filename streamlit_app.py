@@ -315,3 +315,42 @@ with st.expander("📊 Cluster Distribution"):
         "- **Cluster 1:** Has fewer customers compared to Cluster 0, indicating this group may consist of high-value customers who are more engaged and spend more.\n"
         "- Understanding the distribution is crucial for targeted marketing efforts and resource allocation, focusing on both high-volume (Cluster 0) and high-value (Cluster 1) segments."
     )
+
+
+with st.expander("📈 Recommendations and Business Insights"):
+    # Recommendations Section
+    st.info(
+        "### Recommendations:\n"
+        "- **Targeted Marketing Campaigns:**\n"
+        "  - **Cluster 0 (Low Frequency, Low Monetary):** Offer incentives such as discounts to encourage more frequent purchases.\n"
+        "  - **Cluster 1 (High Frequency, High Monetary):** Tailor exclusive offers and VIP events to maintain loyalty and increase spending.\n\n"
+        
+        "- **Personalized Communication:**\n"
+        "  - Use RFM insights to send targeted email campaigns that highlight products related to previous purchases.\n\n"
+
+        "- **Customer Retention Programs:**\n"
+        "  - Implement loyalty programs that reward frequent buyers and consider tiered loyalty levels to incentivize higher spending.\n\n"
+
+        "- **Product Recommendations:**\n"
+        "  - For Cluster 0, recommend complementary products to encourage additional spending.\n\n"
+
+        "- **Monitoring and Feedback:**\n"
+        "  - Continuously monitor customer behavior post-intervention and solicit feedback to adapt strategies.\n\n"
+
+        "- **Customer Education:**\n"
+        "  - Provide resources to educate customers on the value of higher spending products to encourage purchases.\n\n"
+
+        "- **Upselling Opportunities:**\n"
+        "  - Identify opportunities to upsell to Cluster 1 customers by highlighting premium products that align with their interests.\n\n"
+
+        "- **Segment-Specific Promotions:**\n"
+        "  - Design tailored promotions for each cluster, such as introductory offers for Cluster 0 and loyalty discounts for Cluster 1."
+    )
+
+    # Business Insights Section
+    st.info(
+        "### Business Insights:\n"
+        "- **Understanding Customer Segmentation:** RFM analysis provides a clear picture of customer behavior, allowing effective audience segmentation.\n\n"
+        "- **Data-Driven Decision Making:** Leveraging insights enables informed decisions regarding marketing strategies and customer engagement.\n\n"
+        "- **Resource Allocation:** Focus marketing budgets on high-value clusters to maximize ROI and enhance overall profitability."
+    )
