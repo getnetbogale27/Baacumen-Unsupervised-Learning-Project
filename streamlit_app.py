@@ -27,8 +27,6 @@ st.info(
     "and uncover insights for targeted marketing."
 )
 
-
-
 # Convert InvoiceDate to datetime
 df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
 # Remove rows with missing CustomerID
@@ -48,15 +46,21 @@ rfm = df.groupby('CustomerID').agg({
 # Rename columns
 rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 
-
-
+# Merge the RFM data with the original dataset
+df = df.merge(rfm, on='CustomerID', how='left')
 
 # Expanders for different data views
 with st.expander('🔢 Raw data (first 5 rows)'):
-    st.dataframe(df.head(5))  # Display first 5 rows of raw data
+    st.write(df.head(5))  # Display first 5 rows of raw data with RFM columns
 
 with st.expander('Data Types of Each Column'):
     st.write(df.dtypes)
+
+with st.expander('🔢 RFM Data (first 5 rows)'):
+    st.write(rfm.head(5))  # Display first 5 rows of RFM data
+
+with st.expander('📊 View RFM Data Types'):
+    st.write(rfm.dtypes)
 
 # Select only numeric columns for scaling
 dfAttr = df.select_dtypes(include=['float64', 'int64']).copy()
