@@ -102,25 +102,26 @@ with st.expander("🔢 RFM Data After Transformation and Scaling"):
 
 
 # Create an expander for the Distortion (Inertia) Plot
-with st.expander("📉 Distortion (Inertia) Plot for Optimal Clusters"):
-    # Plot the Distortion (WCSS)
+with st.expander("📉 Distortion Plot for Optimal Clusters"):
+    # Plot the distortion values (WCSS/Inertia)
     plt.figure(figsize=(8, 5))
     plt.plot(range(1, 11), wcss, marker='o', linestyle='--')
-    plt.title('Distortion (Inertia) Plot')
+    plt.title('Distortion Plot (Inertia vs. Number of Clusters)')
     plt.xlabel('Number of Clusters')
-    plt.ylabel('WCSS (Within-Cluster Sum of Squares)')
+    plt.ylabel('Distortion (Inertia / WCSS)')
     plt.xticks(range(1, 11))  # Ensure all x-axis labels are shown
     plt.grid()
 
     # Display the plot in Streamlit
     st.pyplot(plt)
 
-    # Provide a brief description
+    # Add a brief description
     st.info(
-        "📌 **Distortion (Inertia)** measures the compactness of the clusters. "
-        "A lower value indicates that points are closer to their cluster center. "
-        "Look for the 'elbow point' where the inertia starts to decrease more slowly."
+        "📌 **Distortion (Inertia)** measures how compact the clusters are. "
+        "Lower values indicate that data points are closer to their cluster center. "
+        "Look for the 'elbow point' where adding more clusters doesn't reduce distortion significantly."
     )
+
 
 
 
