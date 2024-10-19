@@ -209,3 +209,21 @@ with st.expander("📈 Pairplot of RFM Data by Cluster"):
     st.pyplot(pairplot_fig)
 
 
+
+
+
+# Summary statistics for each cluster
+cluster_summary = rfm.groupby('Cluster').mean()
+
+# Expander for Cluster Summary Statistics
+with st.expander("📊 Cluster Summary Statistics"):
+    st.write("Below is the **mean RFM values** for each cluster, providing insight into customer behavior within each segment.")
+    st.dataframe(cluster_summary.style.format(precision=2))  # Display summary with formatting
+
+    # Optional: Display an additional description
+    st.info(
+        "📌 **How to Interpret:**\n"
+        "- **Recency**: Lower values indicate more recent purchases.\n"
+        "- **Frequency**: Higher values indicate frequent purchases.\n"
+        "- **Monetary**: Higher values represent higher spending customers."
+    )
