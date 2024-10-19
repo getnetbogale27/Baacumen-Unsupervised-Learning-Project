@@ -16,7 +16,7 @@ def load_data():
 df = load_data()
 
 # Streamlit app title
-st.title('🤖 Unsupervised Machine Learning App')
+st.title('🤖 Unsupervised ML App')
 
 st.info(
     "An online retailer seeks to understand its customers through transactional data. "
