@@ -59,9 +59,9 @@ rfm = df.groupby('CustomerID').agg({
 rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 
 # Apply log transformation to Monetary for skewness correction
-rfm['Recency'] = np.log1p(rfm['Recency'])
-rfm['Frequency'] = np.sqrt(rfm['Frequency'])
-rfm['Monetary'] = np.log1p(rfm['Monetary'])
+# rfm['Recency'] = np.log1p(rfm['Recency'])
+# rfm['Frequency'] = np.sqrt(rfm['Frequency'])
+# rfm['Monetary'] = np.log1p(rfm['Monetary'])
 
 # Standardize RFM values
 scaler = StandardScaler()
