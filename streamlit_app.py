@@ -53,7 +53,7 @@ rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
 
 # Expanders for different data views
 with st.expander('🔢 Raw data (first 5 rows)'):
-    st.write(df.head(5))  # Display first 5 rows of raw data
+    st.dataframe(df.head(5))  # Display first 5 rows of raw data
 
 with st.expander('Data Types of Each Column'):
     st.write(df.dtypes)
