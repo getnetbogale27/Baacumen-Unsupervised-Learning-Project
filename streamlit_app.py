@@ -178,6 +178,12 @@ with st.expander("📊 Silhouette Score Analysis"):
     optimal_clusters = np.argmax(silhouette_scores) + 2  # Offset by 2
     st.write(f"📌 Optimal number of clusters: **{optimal_clusters}**")
 
+    st.info(
+        "📌 **Remark:**\n"
+        "- The **Silhouette Score** analysis indicates that the optimal number of clusters is **Cluster 2**, with a score of approximately **0.43**."
+        "- Beyond Cluster 2, the Silhouette Score begins to decline, suggesting that additional clusters may not enhance the quality of the clustering."
+        "- This reinforces our confidence in using 2 clusters for this dataset, as it provides a balance between separation and compactness of clusters."
+    )
 
 
 #Step 6
