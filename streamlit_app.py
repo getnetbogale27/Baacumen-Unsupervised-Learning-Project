@@ -170,3 +170,42 @@ with st.expander("📊 Silhouette Analysis for Optimal Clusters"):
     # Show the optimal number of clusters based on the highest Silhouette score
     optimal_clusters = np.argmax(silhouette_scores) + 2  # +2 because range starts at 2
     st.write(f"📌 Optimal number of clusters based on Silhouette Score: **{optimal_clusters}**")
+
+
+
+
+
+
+
+
+# Apply K-means with the chosen number of clusters (e.g., 2)
+kmeans = KMeans(n_clusters=2, init='k-means++', random_state=42)
+rfm['Cluster'] = kmeans.fit_predict(rfm_scaled)
+
+# Expander to preview RFM table with cluster assignments
+with st.expander("📋 View RFM Table with Cluster Assignments"):
+    st.write(rfm.head())  # Display the first few rows of RFM with clusters
+
+# Expander for Scatter Plot: Frequency vs Monetary by Cluster
+with st.expander("📊 Scatter Plot: Frequency vs Monetary by Cluster"):
+    plt.figure(figsize=(8, 5))
+    sns.scatterplot(data=rfm, x='Frequency', y='Monetary', hue='Cluster', palette='viridis', s=60)
+    plt.title('Customer Segments by Frequency and Monetary')
+    plt.xlabel('Frequency')
+    plt.ylabel('Monetary')
+    plt.grid(True)
+    
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
+# Expander for Pairplot of RFM data by Cluster
+with st.expander("📈 Pairplot of RFM Data by Cluster"):
+    pairplot_fig = sns.pairplot(rfm, hue='Cluster', palette='coolwarm', diag_kind='kde', height=2.5)
+    
+    # Add title to pairplot
+    pairplot_fig.fig.suptitle('Pairplot of RFM Data by Cluster', y=1.02)
+    
+    # Display the pairplot in Streamlit
+    st.pyplot(pairplot_fig)
+
+
