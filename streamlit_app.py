@@ -18,6 +18,8 @@ df = load_data()
 
 # Streamlit app title
 st.title('🤖 Unsupervised ML App')
+st.write("**Author:** Getnet B. (PhD Candidate)")
+st.write("**Affiliation:** Baacumen Data Science Bootcamp")
 
 st.info(
     "An online retailer seeks to understand its customers through transactional data. "
@@ -25,8 +27,29 @@ st.info(
     "and uncover insights for targeted marketing."
 )
 
-st.write("**Author:** Getnet B. (PhD Candidate)")
-st.write("**Affiliation:** Baacumen Data Science Bootcamp")
+
+
+# Convert InvoiceDate to datetime
+df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
+# Remove rows with missing CustomerID
+df = df.dropna(subset=['CustomerID'])
+# Filter out negative quantities or unit prices (returns or errors)
+df = df[(df['Quantity'] > 0) & (df['UnitPrice'] > 0)]
+# Create a TotalPrice column
+df['TotalPrice'] = df['Quantity'] * df['UnitPrice']
+# Define the latest date to calculate recency
+latest_date = df['InvoiceDate'].max()
+# Create the RFM table
+rfm = df.groupby('CustomerID').agg({
+    'InvoiceDate': lambda x: (latest_date - x.max()).days,  # Recency
+    'InvoiceNo': 'nunique',  # Frequency (count of unique invoices)
+    'TotalPrice': 'sum'  # Monetary (total spending)
+}).reset_index()
+# Rename columns
+rfm.columns = ['CustomerID', 'Recency', 'Frequency', 'Monetary']
+
+
+
 
 # Expanders for different data views
 with st.expander('🔢 Raw data (first 5 rows)'):
