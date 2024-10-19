@@ -216,6 +216,17 @@ with st.expander("📊 Scatter Plot: Frequency vs Monetary by Cluster"):
     plt.grid(True)
     st.pyplot(plt)
     plt.close()
+    st.info(
+        "📌 **Scatter Plot Insights:**\n"
+        "- The scatter plot visualizes customer segments based on their **Frequency** (number of purchases) and **Monetary** (total spending).\n"
+        "- Each color represents a different customer cluster, highlighting distinct groups within the data.\n"
+        "- Customers in **Cluster 0** show high frequency but low monetary value, indicating frequent, low-value purchases.\n"
+        "- In contrast, **Cluster 1** reveal customers with lower frequency but higher spending, suggesting loyalty or premium purchases.\n"
+        "- This visualization aids in understanding customer behavior and tailoring marketing strategies accordingly."
+    )
+
+
+
 
 # Pairplot of RFM data by Cluster
 with st.expander("📈 Pairplot of RFM Data by Cluster"):
