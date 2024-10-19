@@ -100,6 +100,30 @@ with st.expander("🔢 RFM Data After Transformation and Scaling"):
     st.write("RFM Data after Log Transformation and Standardization:")
     st.dataframe(rfm_scaled)
 
+
+# Create an expander for the Distortion (Inertia) Plot
+with st.expander("📉 Distortion (Inertia) Plot for Optimal Clusters"):
+    # Plot the Distortion (WCSS)
+    plt.figure(figsize=(8, 5))
+    plt.plot(range(1, 11), wcss, marker='o', linestyle='--')
+    plt.title('Distortion (Inertia) Plot')
+    plt.xlabel('Number of Clusters')
+    plt.ylabel('WCSS (Within-Cluster Sum of Squares)')
+    plt.xticks(range(1, 11))  # Ensure all x-axis labels are shown
+    plt.grid()
+
+    # Display the plot in Streamlit
+    st.pyplot(plt)
+
+    # Provide a brief description
+    st.info(
+        "📌 **Distortion (Inertia)** measures the compactness of the clusters. "
+        "A lower value indicates that points are closer to their cluster center. "
+        "Look for the 'elbow point' where the inertia starts to decrease more slowly."
+    )
+
+
+
 # Create an expander for the Elbow method plot
 with st.expander("📈 Elbow Method for Optimal Clusters"):
     # Plot the Elbow curve
