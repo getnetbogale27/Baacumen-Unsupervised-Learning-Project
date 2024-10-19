@@ -161,6 +161,25 @@ with st.expander("📈 Pairplot of RFM Data by Cluster"):
     plt.close()
 
 
+# Boxplot
+# Boxplot
+# Boxplot
+# Box plot: Group by clusters
+with st.expander("📊 Box Plot Grouped by Clusters"):
+    # Select RFM feature to plot (Recency, Frequency, or Monetary)
+    feature = st.selectbox("Select RFM feature for box plot:", ['Recency', 'Frequency', 'Monetary'])
+
+    plt.figure(figsize=(8, 5))
+    sns.boxplot(data=rfm, x='Cluster', y=feature, palette='Set2')
+    plt.title(f'{feature} Distribution by Cluster')
+    plt.xlabel('Cluster')
+    plt.ylabel(feature)
+    plt.grid(True)
+
+    st.pyplot(plt)
+    plt.close()
+
+
 
 #Step 7
 # Cluster Summary Statistics
