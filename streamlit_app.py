@@ -196,7 +196,7 @@ with st.expander("📊 Cluster Selection Info"):
     st.info(
         "📌 **Cluster Selection:**\n"
         "- We can use the slider above to select the number of clusters for the K-Means clustering analysis. \n"
-        "- The default value is set to **{optimal_clusters}**, based on our earlier analysis using both the **Elbow Method** and **Silhouette Score Analysis**."
+        "- The default value is set to **Cluster 2**, based on our earlier analysis using both the **Elbow Method** and **Silhouette Score Analysis**."
     )
 
 
@@ -308,3 +308,10 @@ with st.expander("📊 Cluster Distribution"):
     plt.title('Customer Distribution across Clusters')
     st.pyplot(plt)
     plt.close()
+    st.info(
+        "📌 **Cluster Distribution Insights:**\n"
+        "- The count plot displays the number of customers within each cluster, indicating the size of each customer segment.\n"
+        "- **Cluster 0:** Contains the majority of customers, suggesting it may represent a larger group with common characteristics, likely lower spending and frequency.\n"
+        "- **Cluster 1:** Has fewer customers compared to Cluster 0, indicating this group may consist of high-value customers who are more engaged and spend more.\n"
+        "- Understanding the distribution is crucial for targeted marketing efforts and resource allocation, focusing on both high-volume (Cluster 0) and high-value (Cluster 1) segments."
+    )
