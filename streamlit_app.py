@@ -19,11 +19,9 @@ df = load_data()
 st.title('🤖 Unsupervised Machine Learning App')
 
 st.info(
-    "An online retailer wants to understand its customer base and their purchasing patterns. "
-    "The provided dataset contains transactional data, including purchase amounts, frequency, and customer information. "
-    "Your objective is to segment the customers using K-means clustering based on their transaction behavior "
-    "(e.g., purchase frequency, spending amount, and recency). Use the RFM (Recency, Frequency, Monetary) model as part of your clustering process "
-    "and provide insights into customer loyalty and behavior for targeted marketing strategies."
+    "An online retailer seeks to understand its customers through transactional data. "
+    "Use K-means clustering with the RFM (Recency, Frequency, Monetary) model to segment customers "
+    "and uncover insights for targeted marketing."
 )
 
 
