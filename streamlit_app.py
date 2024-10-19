@@ -12,7 +12,7 @@ import seaborn as sns
 from scipy.stats import zscore
 
 # Ensure plots render correctly in Streamlit
-plt.style.use('seaborn')
+# plt.style.use('seaborn')
 
 # Cache data loading
 @st.cache_data
