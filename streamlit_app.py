@@ -30,6 +30,9 @@ st.markdown(
     "**Affiliation:** Baacumen Data Science Bootcamp"
 )
 
+st.write("**Author:** Getnet B. (PhD Candidate)")
+st.write("**Affiliation:** Baacumen Data Science Bootcamp")
+
 # Expanders for different data views
 with st.expander('🔢 Raw data (first 5 rows)'):
     st.write(df.head(5))  # Display first 5 rows of raw data
