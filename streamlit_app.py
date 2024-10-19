@@ -8,7 +8,7 @@ import seaborn as sns
 
 @st.cache_data
 def load_data():
-    url = 'https://raw.githubusercontent.com/getnetbogale27/Baacumen-Unsupervised-Learning-Project/refs/heads/main/Dataset/Online_Retail_dataset.csv?token=GHSAT0AAAAAACY5XTINOJINW4RIB7MMIHMWZYRHK6Q'
+    url = 'https://raw.githubusercontent.com/getnetbogale27/Baacumen-Unsupervised-Learning-Project/refs/heads/main/Dataset/Online_Retail_dataset.csv'
     df = pd.read_csv(url)
     return df
 
