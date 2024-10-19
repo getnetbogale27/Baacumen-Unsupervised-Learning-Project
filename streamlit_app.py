@@ -1,41 +1,41 @@
-# Imports and Data Loading
-# Imports and Data Loading
-# Imports and Data Loading
-import streamlit as st
-import pandas as pd
-import numpy as np
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import silhouette_score
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy.stats import zscore
+# # Imports and Data Loading
+# # Imports and Data Loading
+# # Imports and Data Loading
+# import streamlit as st
+# import pandas as pd
+# import numpy as np
+# from sklearn.cluster import KMeans
+# from sklearn.preprocessing import StandardScaler
+# from sklearn.metrics import silhouette_score
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# from scipy.stats import zscore
 
-# Ensure plots render correctly in Streamlit
-plt.style.use('seaborn')
+# # Ensure plots render correctly in Streamlit
+# plt.style.use('seaborn')
 
-# Cache data loading
-@st.cache_data
-def load_data():
-    url = 'https://raw.githubusercontent.com/getnetbogale27/Baacumen-Unsupervised-Learning-Project/refs/heads/main/Dataset/Online_Retail_dataset.csv'
-    df = pd.read_csv(url, encoding='ISO-8859-1')  # ISO encoding for special characters
-    return df
+# # Cache data loading
+# @st.cache_data
+# def load_data():
+#     url = 'https://raw.githubusercontent.com/getnetbogale27/Baacumen-Unsupervised-Learning-Project/refs/heads/main/Dataset/Online_Retail_dataset.csv'
+#     df = pd.read_csv(url, encoding='ISO-8859-1')  # ISO encoding for special characters
+#     return df
 
-# Load the dataset
-df = load_data()
+# # Load the dataset
+# df = load_data()
 
 
-# Streamlit App Setup
-# Streamlit App Setup
-# Streamlit App Setup
-# Streamlit title and info
-st.title('🤖 Unsupervised ML App')
-st.write("**Author:** Getnet B. (PhD Candidate)")
+# # Streamlit App Setup
+# # Streamlit App Setup
+# # Streamlit App Setup
+# # Streamlit title and info
+# st.title('🤖 Unsupervised ML App')
+# st.write("**Author:** Getnet B. (PhD Candidate)")
 
-st.info(
-    "Objective: An online retailer seeks to understand its customers through transactional data. "
-    "Using K-means clustering with the RFM model, we segment customers and uncover insights for targeted marketing."
-)
+# st.info(
+#     "Objective: An online retailer seeks to understand its customers through transactional data. "
+#     "Using K-means clustering with the RFM model, we segment customers and uncover insights for targeted marketing."
+# )
 
 
 
