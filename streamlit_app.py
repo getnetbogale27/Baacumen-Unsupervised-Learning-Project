@@ -75,6 +75,11 @@ rfm_scaled = pd.DataFrame(rfm_scaled, columns=['Recency', 'Frequency', 'Monetary
 # Display raw data and data types
 with st.expander('🔢 Raw data (first 5 rows)'):
     st.write(df.head(5))
+    st.info(
+        "📌 **Note:**\n"
+        "- **Total Dimension**: 541909\n"
+        "- **Total Features**: 8"
+    )
 
 with st.expander('📋 Data Types'):
     st.write(df.dtypes)
