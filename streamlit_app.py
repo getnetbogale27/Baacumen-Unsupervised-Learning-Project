@@ -24,12 +24,6 @@ st.info(
     "and uncover insights for targeted marketing."
 )
 
-# Author Information
-st.markdown(
-    "**Author:** Getnet B. (PhD Candidate)  \n"
-    "**Affiliation:** Baacumen Data Science Bootcamp"
-)
-
 st.write("**Author:** Getnet B. (PhD Candidate)")
 st.write("**Affiliation:** Baacumen Data Science Bootcamp")
 
@@ -37,11 +31,3 @@ st.write("**Affiliation:** Baacumen Data Science Bootcamp")
 with st.expander('🔢 Raw data (first 5 rows)'):
     st.write(df.head(5))  # Display first 5 rows of raw data
 
-with st.expander('🧩 X (independent variables) (first 5 rows)'):
-    X_raw = df.iloc[:, 3:-1]
-    st.write(X_raw.head(5))  # Display first 5 rows of independent variables
-
-with st.expander('🎯 Y (dependent variable) (first 5 rows)'):
-    y_raw = df.iloc[:, -1]
-    # Display first 5 rows of dependent variable
-    st.write(y_raw.head(5).reset_index(drop=True))
