@@ -1,5 +1,4 @@
-# Imports and Data Loading
-# Imports and Data Loading
+#Step 1
 # Imports and Data Loading
 import streamlit as st
 import pandas as pd
@@ -10,9 +9,6 @@ from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import zscore
-
-# Ensure plots render correctly in Streamlit
-# plt.style.use('seaborn')
 
 # Cache data loading
 @st.cache_data
@@ -25,8 +21,7 @@ def load_data():
 df = load_data()
 
 
-# Streamlit App Setup
-# Streamlit App Setup
+#Step 2
 # Streamlit App Setup
 # Streamlit title and info
 st.title('🤖 Unsupervised ML App')
@@ -40,8 +35,7 @@ st.info(
 
 
 
-# Data Cleaning & RFM Calculation
-# Data Cleaning & RFM Calculation
+#Step 3
 # Data Cleaning & RFM Calculation
 # Convert InvoiceDate to datetime
 df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
@@ -74,9 +68,7 @@ rfm_scaled = pd.DataFrame(rfm_scaled, columns=['Recency', 'Frequency', 'Monetary
 
 
 
-
-# Data Visualizations and Exploratory Analysis
-# Data Visualizations and Exploratory Analysis
+#Step 4
 # Data Visualizations and Exploratory Analysis
 # Display raw data and data types
 with st.expander('🔢 Raw data (first 5 rows)'):
@@ -94,8 +86,7 @@ with st.expander("📊 Pairplot of Scaled Data"):
 
 
 
-# Cluster Analysis: Elbow Method and Silhouette Score
-# Cluster Analysis: Elbow Method and Silhouette Score
+#Step 5
 # Cluster Analysis: Elbow Method and Silhouette Score
 # Elbow method for determining optimal clusters
 wcss = []
@@ -140,8 +131,7 @@ with st.expander("📊 Silhouette Score Analysis"):
 
 
 
-# K-Means Clustering and Visualization
-# K-Means Clustering and Visualization
+#Step 6
 # K-Means Clustering and Visualization
 # User selects number of clusters via slider
 num_clusters = st.slider("Select Number of Clusters:", min_value=2, max_value=10, value=optimal_clusters)
@@ -172,8 +162,7 @@ with st.expander("📈 Pairplot of RFM Data by Cluster"):
 
 
 
-# Cluster Summary Statistics
-# Cluster Summary Statistics
+#Step 7
 # Cluster Summary Statistics
 # Summary statistics for each cluster
 cluster_summary = rfm.groupby('Cluster').agg({
