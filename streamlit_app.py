@@ -56,12 +56,6 @@ with st.expander('🔢 Raw data (first 5 rows)'):
 with st.expander('Data Types of Each Column'):
     st.write(df.dtypes)
 
-with st.expander('🔢 RFM Data (first 5 rows)'):
-    st.write(rfm.head(5))  # Display first 5 rows of RFM data
-
-with st.expander('📊 View RFM Data Types'):
-    st.write(rfm.dtypes)
-
 # Select only numeric columns for scaling
 dfAttr = df.select_dtypes(include=['float64', 'int64']).copy()
 
