@@ -35,9 +35,6 @@ with st.expander('🔢 Raw data (first 5 rows)'):
 with st.expander('Data Types of Each Column'):
     st.write(df.dtypes)
 
-# Assuming you have loaded your DataFrame `df`
-df = pd.read_csv('your_dataset.csv')  # Load your dataset
-
 # Select only numeric columns for scaling
 dfAttr = df.select_dtypes(include=['float64', 'int64']).copy()
 
